@@ -1,0 +1,40 @@
+{% extends 'patient_mgm/base.html' %}
+
+{% block title %}
+Contact lists
+{% endblock %}
+
+{% block content %}
+<div>
+    <h2>List of contacts</h2>
+    <table>
+        <thead>
+            <th>First name</th>
+            <th>Last name</th>
+        </thead>
+        <tbody>
+            {% for contact in contact_list %}
+            <tr>
+                <td>{{ contact.first_name }}</td>
+                <td>{{ contact.last_name }}</td>
+            </tr>
+            {% empty %}
+            <p>No contacts available</p>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+    <span>
+        
+        <p>Page: {{page_obj.number}} of {{page_obj.paginator.num_pages}} pages</p>
+        {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}">Previous page</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">Next page</a>
+        {% endif %}
+    </span>
+
+</div>
+{% endblock %}

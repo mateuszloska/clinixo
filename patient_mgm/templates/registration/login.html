@@ -1,0 +1,16 @@
+{% extends 'patient_mgm/base.html' %}
+
+{% block content %}
+<h2>Login page</h2>
+
+<div>
+<form action="{% url 'patient_mgm:login' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value=" {{next}} " />
+    <input type="submit" value="Login" />
+</form>
+
+</div>
+
+{% endblock %}
